@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Name: ERDPlugin2
+OpenIDE-Module-Short-Description: Entity Relationship Diagram using Gephi and Gravisto
+OpenIDE-Module-Long-Description: Entity Relationship Diagram using Gephi and Gravisto
+OpenIDE-Module-Display-Category: Layout

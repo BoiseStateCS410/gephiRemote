@@ -12,6 +12,7 @@
     <!-- List of modules -->
     <modules>
         <!-- Add here the paths of all modules (e.g. <module>modules/MyModule</module>) -->
+        <module>modules/ERDPlugin2</module>
     </modules>
     
     <!-- Properties -->
@@ -25,12 +26,18 @@
     <!-- SCM -->
     <scm>
         <connection>scm:git:git://github.com/gephi/gephi-plugins.git</connection>
-        <developerConnection>scm:git:git@github.com:gephi/gephi-plugins.git</developerConnection>
+<!--        <developerConnection>scm:git:git@github.com:gephi/gephi-plugins.git</developerConnection> -->
         <url>https://github.com/gephi/gephi-plugins</url>
     </scm>
 
     <!-- Repositories -->
     <repositories>
+    	<repository>
+    		<id>gephi-plugins2</id>
+    		<name>ERDPlugin2</name>
+    		<url>file:${project.basedir}/modules/ERDPlugin2</url>
+    	</repository>
+    	
         <repository>
             <id>oss-sonatype</id>
             <name>oss-sonatype</name>
@@ -70,6 +77,10 @@
             <classifier>linux-x64</classifier>
             <type>tar.gz</type>
         </dependency>
+        
+ 
+        
+        
     </dependencies>
     
     <build>
