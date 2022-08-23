@@ -4,7 +4,7 @@
     <parent>
         <artifactId>gephi-plugin-parent</artifactId>
         <groupId>org.gephi</groupId>
-        <version>0.9.3</version>
+        <version>0.9.6</version>
     </parent>
 
     <groupId>my.lynott</groupId>
@@ -23,7 +23,7 @@
         <dependency>
         	<groupId>org.gephi</groupId>
         	<artifactId>graphstore</artifactId>
-        	<version>0.6.7</version>
+        	<version>0.6.10</version>
         </dependency>
     </dependencies>
 
@@ -79,7 +79,7 @@
     </build>
 
     <!-- Snapshot Repositories (only needed if developing against a SNAPSHOT version) -->
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>oss-sonatype</id>
             <name>oss-sonatype</name>
@@ -89,6 +89,8 @@
             </snapshots>
         </repository>
     </repositories>
+-->
+
 </project>
 
 

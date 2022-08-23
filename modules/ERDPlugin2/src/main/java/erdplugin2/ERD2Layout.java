@@ -155,8 +155,9 @@ public class ERD2Layout implements Layout {
 		/*
 		 * Execute the backend Sugiyama algorithm set.
 		 * ERDExecute is an added method in the Sugiyama code.
+		 * which adds in the command to return
 		 */
-		sd = sg.ERDExecute();
+		sg.execute();
 
 		/*
 		 * At this point, the backend algorithms have been executed.
@@ -182,7 +183,7 @@ public class ERD2Layout implements Layout {
 		 * graph from SugiyamaData, and the ERDTweeny class.
 		 */
 		gr2t = new GR2Tweeny((FastGraph) sd.getGraph(), erdt);
-		erdt = gr2t.convertToT();
+		gr2t.convertToT();
 
 		/*
 		 * Instantiate a new Tweeny-to-Gephi class passing it
@@ -190,7 +191,7 @@ public class ERD2Layout implements Layout {
 		 */
 
 		t2ge = new Tweeny2GE(erdt,g);
-		g = t2ge.convert2GE();
+		t2ge.convert2GE();
 
 		/* 
 		 * Now the Gephi graph has been updated with the results
@@ -198,12 +199,14 @@ public class ERD2Layout implements Layout {
 		 */
 
 		/*
-		 * Signal to the infrastructure that the algorithms have
-		 * halted and the graph can be read.
+		 * Unlock the graph -- the counterpart to the readLock in initAlgo.
+		 * Set the boolean var executing to false, signaling to the infrastructure 
+		 * that the algorithm has halted and the graph can be read.
 		 */
-		executing = false;
 
 		g.readUnlock();
+		
+		executing = false;
 	}
 
 	//	@Override
