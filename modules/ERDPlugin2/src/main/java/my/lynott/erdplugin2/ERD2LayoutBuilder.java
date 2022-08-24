@@ -27,7 +27,7 @@ public class ERD2LayoutBuilder implements LayoutBuilder {
 
 //	@Override
 	public String getName() {
-		return "ERD1Layout";
+		return "ERD2Layout";
 	}
 
 //	@Override
