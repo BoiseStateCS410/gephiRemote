@@ -1,6 +1,7 @@
 package my.lynott.erdplugin2;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.gephi.graph.api.EdgeIterable;
