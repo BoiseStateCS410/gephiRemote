@@ -1,5 +1,8 @@
 package my.lynott.erdplugin2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.gephi.graph.api.EdgeIterable;
 
 import org.gephi.graph.api.Graph;
@@ -209,6 +212,25 @@ public class ERD2Layout implements Layout {
 
 	//	@Override
 	public LayoutProperty[] getProperties() {
+        List<LayoutProperty> properties = new ArrayList<LayoutProperty>();
+        final String ERDLAYOUT = "ERD Layout";
+
+        try {
+            properties.add(LayoutProperty.createProperty(
+                    this, Integer.class,
+                    "Area size",
+                    ERDLAYOUT,
+                    "The area size",
+                    "getAreaSize", "setAreaSize"));
+            properties.add(LayoutProperty.createProperty(
+                    this, Float.class,
+                    "Speed",
+                    ERDLAYOUT,
+                    "The speed at which the nodes move",
+                    "getSpeed", "setSpeed"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 		return null;
 	}
 
@@ -216,6 +238,22 @@ public class ERD2Layout implements Layout {
 	public void resetPropertiesValues() {
 		areaSize = 1000;
 		speed = 1f;
+	}
+
+	public Float getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(Float speed) {
+		this.speed = speed;
+	}
+
+	public Integer getAreaSize() {
+		return areaSize;
+	}
+
+	public void setAreaSize(Integer area) {
+		this.areaSize = area;
 	}
 
 	//	@Override
