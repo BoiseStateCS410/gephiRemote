@@ -1,8 +1,6 @@
-package erdplugin2;
+package my.lynott.erdplugin2;
 
 import org.gephi.graph.api.EdgeIterable;
-
-
 
 import org.gephi.graph.api.Graph;
 

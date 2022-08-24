@@ -1,4 +1,4 @@
-package erdplugin2;
+package my.lynott.erdplugin2;
 
 /*
  * Derived from GridLayoutBuilder by M. Bastian

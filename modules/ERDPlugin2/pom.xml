@@ -4,7 +4,7 @@
     <parent>
         <artifactId>gephi-plugin-parent</artifactId>
         <groupId>org.gephi</groupId>
-        <version>0.9.6</version>
+        <version>0.9.3</version>
     </parent>
 
     <groupId>my.lynott</groupId>
@@ -13,6 +13,10 @@
     <packaging>nbm</packaging>
 
     <name>ERDPlugin2</name>
+    
+    <properties>
+    	 <netbeans.branding.token>ERDPlugin2</netbeans.branding.token>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -23,7 +27,7 @@
         <dependency>
         	<groupId>org.gephi</groupId>
         	<artifactId>graphstore</artifactId>
-        	<version>0.6.10</version>
+        	<version>0.6.7</version>
         </dependency>
     </dependencies>
 
@@ -34,8 +38,9 @@
                 <artifactId>nbm-maven-plugin</artifactId>
                 <configuration>
                     <licenseName>Apache 2.0</licenseName>
+                    <licenseFile>LICENSE.txt</licenseFile>
                     <author>M. Lynott</author>
-                    <publicPackages>
+                     <publicPackages>
                         <!-- Insert public packages -->
                     </publicPackages>
                 </configuration>
