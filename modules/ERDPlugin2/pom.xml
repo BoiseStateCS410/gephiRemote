@@ -34,6 +34,12 @@
         	<artifactId>graphstore</artifactId>
         	<version>0.6.7</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>ERDPlugin1</groupId>
+        	<artifactId>ERDPlugin1</artifactId>
+        	<version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
