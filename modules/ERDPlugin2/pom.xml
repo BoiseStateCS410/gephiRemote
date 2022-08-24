@@ -26,6 +26,11 @@
         
         <dependency>
         	<groupId>org.gephi</groupId>
+        	<artifactId>layout-api</artifactId>       
+        </dependency>
+        
+        <dependency>
+        	<groupId>org.gephi</groupId>
         	<artifactId>graphstore</artifactId>
         	<version>0.6.7</version>
         </dependency>

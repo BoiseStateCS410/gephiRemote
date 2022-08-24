@@ -10,6 +10,7 @@ Portions Copyrighted 2011 Gephi Consortium.
  */
 
 import javax.swing.Icon;
+
 import javax.swing.JPanel;
 
 import org.gephi.layout.spi.Layout;
