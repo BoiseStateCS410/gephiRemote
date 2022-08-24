@@ -24,7 +24,6 @@ import org.graffiti.plugins.algorithms.sugiyama.erd.Tweeny2GE;
 
 /*
  * Derived from the Gephi Plugin environment's GridLayout by M. Bastian.
-
  *
  * Additional code by Michael Lynott
  */
@@ -139,13 +138,12 @@ public class ERD2Layout implements Layout {
 		this.graphModel = gm;
 	}
 
-
-	//	@Override
-	@SuppressWarnings("null")
 	/*
 	 * At this point, the provided graph has been converted into ERDTweeny,
 	 * and into a graph for use by the backend algorithm.
 	 */
+	//	@Override
+	@SuppressWarnings("null")
 	public void goAlgo() {
 		/* 
 		 * Initiate the backend algorithm: its gateway is the Sugiyama class. 
