@@ -26,6 +26,7 @@ import org.graffiti.plugins.algorithms.sugiyama.erd.Tweeny2GR;
 import org.graffiti.plugins.algorithms.sugiyama.layout.SocialBrandesKoepf;
 import org.graffiti.plugins.algorithms.sugiyama.levelling.LongestPath;
 import org.graffiti.plugins.algorithms.sugiyama.util.SugiyamaData;
+import org.jfree.util.Log;
 import org.graffiti.plugins.algorithms.sugiyama.erd.GR2Tweeny;
 import org.graffiti.plugins.algorithms.sugiyama.erd.Tweeny2GE;
 
@@ -81,6 +82,9 @@ public class ERD2Layout implements Layout {
 	/** An instance of the Gravisto-to-ERDTweeny conversion program. */
 	private GR2Tweeny gr2t;
 	
+	/** An instance of the nbm logger */
+	final java.util.logging.Logger LOG;
+	
 	/** This class name -- for use by logging invocation */
 	String name="ERD2Layout";
 
@@ -112,8 +116,7 @@ public class ERD2Layout implements Layout {
 		this.builder = builder;
 		
 		/* == ENABLE LOGGING == */
-		final java.util.logging.Logger LOG =
-		    java.util.logging.Logger.getLogger(this.getClass().getName());
+		LOG = java.util.logging.Logger.getLogger(this.getClass().getName());
 	}
 
 	//	@Override
@@ -130,7 +133,7 @@ public class ERD2Layout implements Layout {
 	//	@Override
 	@SuppressWarnings("null")
 	public void goAlgo() {
-		
+		Log.info("Entering ERD2Layout goAlgo");
 		/*
 		 * Retrieve the graph from the Gephi infrastructure.
 		 */
@@ -150,7 +153,10 @@ public class ERD2Layout implements Layout {
 		/*
 		 * Convert the graph into an instance of ERDTweeny
 		 */		
+		
+		LOG.info("Beginning conversion to Tweeny");
 		erdt = ge2t.convertToT();
+		LOG.info("Returned from conversion to Tweeny");
 		
 		/*
 		 * Create the SugiyamaData object, and populate it with
@@ -216,6 +222,8 @@ public class ERD2Layout implements Layout {
 		 */
 
 		g.readUnlock();
+		
+		Log.info("Leaving ERD2Laout goAlgo");
 
 	}
 
