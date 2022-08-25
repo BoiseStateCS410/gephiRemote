@@ -203,3 +203,4 @@ If you've already had a forked repository based on 0.8 we suggest to save your c
 This command will detect the ant-based plugin and migrate it. The resulting folder is then located into the `modules` folder.
 
 The plugin code can then be inspected in Netbeans or built via command line with `mvn clean package`.
+"# gephiRemote" 
