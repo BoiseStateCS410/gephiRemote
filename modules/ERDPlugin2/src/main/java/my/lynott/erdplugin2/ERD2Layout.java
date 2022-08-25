@@ -246,28 +246,27 @@ public class ERD2Layout implements Layout {
 		 * format, where the index is provided as the first
 		 * parameter. 
 		 */
-        List<LayoutProperty> properties = new ArrayList<LayoutProperty>(2);
+        LayoutProperty[] properties = new LayoutProperty[2];
         final String ERD2LAYOUT = "ERD2Layout";
 
         try {
-            properties.add(0, LayoutProperty.createProperty(
+            properties[0] = LayoutProperty.createProperty(
                     this, Integer.class,
                     "Area size",
                     ERD2LAYOUT,
                     "The area size",
-                    "getAreaSize", "setAreaSize"));
-            properties.add(1, LayoutProperty.createProperty(
+                    "getAreaSize", "setAreaSize");
+            properties[1] = LayoutProperty.createProperty(
                     this, Float.class,
                     "Speed",
                     ERD2LAYOUT,
                     "The speed at which the nodes move",
-                    "getSpeed", "setSpeed"));
- 
-            
+                    "getSpeed", "setSpeed");
+           
         } catch (Exception e) {
             e.printStackTrace();
         }
-		return null;
+		return properties;
 	}
 
 	//	@Override
