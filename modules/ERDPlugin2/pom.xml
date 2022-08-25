@@ -40,6 +40,12 @@
         	<artifactId>ERDPlugin1</artifactId>
         	<version>0.0.1</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>org.gephi</groupId>
+        	<artifactId>core-library-wrapper</artifactId>
+        	<version>0.9.3</version>
+        </dependency>
     </dependencies>
 
     <build>
