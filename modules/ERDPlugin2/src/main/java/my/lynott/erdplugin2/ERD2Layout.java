@@ -247,19 +247,19 @@ public class ERD2Layout implements Layout {
 		 * parameter. 
 		 */
         List<LayoutProperty> properties = new ArrayList<LayoutProperty>(2);
-        final String ERDLAYOUT = "ERD Layout";
+        final String ERD2LAYOUT = "ERD2Layout";
 
         try {
             properties.add(0, LayoutProperty.createProperty(
                     this, Integer.class,
                     "Area size",
-                    ERDLAYOUT,
+                    ERD2LAYOUT,
                     "The area size",
                     "getAreaSize", "setAreaSize"));
             properties.add(1, LayoutProperty.createProperty(
                     this, Float.class,
                     "Speed",
-                    ERDLAYOUT,
+                    ERD2LAYOUT,
                     "The speed at which the nodes move",
                     "getSpeed", "setSpeed"));
  
