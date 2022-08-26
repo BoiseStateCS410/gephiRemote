@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+	http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.gephi</groupId>
@@ -77,10 +80,26 @@
             <classifier>linux-x64</classifier>
             <type>tar.gz</type>
         </dependency>
-        
- 
-        
-        
+
+
+
+
+        <dependency>
+        	<groupId>org.gephi</groupId>
+        	<artifactId>graph-api</artifactId>
+        	<version>0.9.3</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.gephi</groupId>
+        	<artifactId>layout-api</artifactId>
+        	<version>0.9.3</version>
+        </dependency>
+        <dependency>
+        	<groupId>my.lynott</groupId>
+        	<artifactId>ERDPlugin1</artifactId>
+        	<version>0.0.1</version>
+        	<type>nbm</type>
+        </dependency>
     </dependencies>
     
     <build>

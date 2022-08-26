@@ -56,7 +56,7 @@ public class ERD2Layout implements Layout {
 	 *   (I think.) Setting it to -1 negates any size check by the Gephi
 	 *   Layout infrastructure.)
 	 */
-	private int areaSize = -1;
+	private int areaSize;
 
 	/** A required instance of the Gephi Plugin LayoutBuilder class. */
 	private final LayoutBuilder builder;
@@ -250,7 +250,7 @@ public class ERD2Layout implements Layout {
 		 * (specified by an internal variable.)
 		 * 
 		 * Made two changes: provided the size of the new ArryList (2);
-		 * changed the format of properties.add to the alternate
+		 * changed the structure of properties.add to the alternate
 		 * format, where the index is provided as the first
 		 * parameter. 
 		 */
@@ -258,19 +258,21 @@ public class ERD2Layout implements Layout {
         final String ERD2LAYOUT = "ERD2Layout";
 
         try {
+        	
             properties[0] = LayoutProperty.createProperty(
                     this, Integer.class,
-                    "Area size",
+                    "areaSize",
                     ERD2LAYOUT,
                     "The area size",
                     "getAreaSize", "setAreaSize");
+            
             properties[1] = LayoutProperty.createProperty(
                     this, Float.class,
-                    "Speed",
+                    "speed",
                     ERD2LAYOUT,
                     "The speed at which the nodes move",
                     "getSpeed", "setSpeed");
-           
+                    
         } catch (Exception e) {
             e.printStackTrace();
         }
