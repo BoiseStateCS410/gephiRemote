@@ -94,12 +94,13 @@
         	<artifactId>layout-api</artifactId>
         	<version>0.9.3</version>
         </dependency>
-        <dependency>
-        	<groupId>my.lynott</groupId>
+  <!--      <dependency> 
+        	<groupId>ERDPlugin1</groupId>
         	<artifactId>ERDPlugin1</artifactId>
         	<version>0.0.1</version>
         	<type>nbm</type>
         </dependency>
+-->       
     </dependencies>
     
     <build>
