@@ -256,8 +256,8 @@ public class ERD2Layout implements Layout {
 		 * 
 		 * Let's try "Nothing"--is "Nothing" good for you?
 		 */
- /*       LayoutProperty[] properties = new LayoutProperty[1];
-        final String ERD2LAYOUT = "ERD2Layout";
+       LayoutProperty[] properties = new LayoutProperty[0];
+/*        final String ERD2LAYOUT = "ERD2Layout";
 
         try {
         	
@@ -279,7 +279,7 @@ public class ERD2Layout implements Layout {
             e.printStackTrace();
         }  
 */        
-		return null;
+		return properties;
 	}
 
 	//	@Override
