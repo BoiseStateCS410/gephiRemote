@@ -82,8 +82,8 @@ public class ERD2Layout implements Layout {
 	/** An instance of the Gravisto-to-ERDTweeny conversion program. */
 	private GR2Tweeny gr2t;
 	
-	/** An instance of the nbm logger */
-	final java.util.logging.Logger LOG;
+	/** An instance of the logger */
+	/*final java.util.logging.Logger LOG; */
 	
 	/** This class name -- for use by logging invocation */
 	String name="ERD2Layout";
@@ -116,7 +116,7 @@ public class ERD2Layout implements Layout {
 		this.builder = builder;
 		
 		/* == ENABLE LOGGING == */
-		LOG = java.util.logging.Logger.getLogger(this.getClass().getName());
+	/*	LOG = java.util.logging.Logger.getLogger(this.getClass().getName()); */
 	}
 
 	//	@Override
@@ -154,9 +154,9 @@ public class ERD2Layout implements Layout {
 		 * Convert the graph into an instance of ERDTweeny
 		 */		
 		
-		LOG.info("Beginning conversion to Tweeny");
+		Log.info("Beginning conversion to Tweeny");
 		erdt = ge2t.convertToT();
-		LOG.info("Returned from conversion to Tweeny");
+		Log.info("Returned from conversion to Tweeny");
 		
 		/*
 		 * Create the SugiyamaData object, and populate it with
