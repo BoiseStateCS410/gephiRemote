@@ -253,8 +253,10 @@ public class ERD2Layout implements Layout {
 		 * changed the structure of properties.add to the alternate
 		 * format, where the index is provided as the first
 		 * parameter. 
+		 * 
+		 * Let's try "Nothing"--is "Nothing" good for you?
 		 */
-        LayoutProperty[] properties = new LayoutProperty[2];
+ /*       LayoutProperty[] properties = new LayoutProperty[1];
         final String ERD2LAYOUT = "ERD2Layout";
 
         try {
@@ -275,8 +277,9 @@ public class ERD2Layout implements Layout {
                     
         } catch (Exception e) {
             e.printStackTrace();
-        }
-		return properties;
+        }  
+*/        
+		return null;
 	}
 
 	//	@Override
