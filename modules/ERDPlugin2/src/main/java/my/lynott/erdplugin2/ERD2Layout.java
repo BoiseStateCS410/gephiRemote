@@ -1,6 +1,8 @@
 package my.lynott.erdplugin2;
 
 import java.util.ArrayList;
+
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -49,7 +51,7 @@ public class ERD2Layout implements Layout {
 	/**
 	 * The set of Sugiyama algorithms to be executed.
 	 */
-	SugiyamaAlgorithm[] algorithms=null;
+	SugiyamaAlgorithm[] algorithms;
 	
 	/** Signal the algorithm that Gephi requires that algorithm
 	 *   to compact its returned graph to a size within this target area.
@@ -71,10 +73,15 @@ public class ERD2Layout implements Layout {
 	private boolean executing = false;
 
 	/** An instance of the Gephi Graph */
-	private Graph g;
+	private org.gephi.graph.api.Graph g;
 
 	/** An instance of the Gephi-to-ERDTweeny conversion program. */
 	private GE2Tweeny ge2t;
+	
+	/** Added for testing only: Did the graph come from gephi or was it added
+	 *   from the outside?
+	 */
+	private Boolean graphAdded=false;
 
 	/** Required by the Gephi Layout process. */
 	private GraphModel graphModel;
@@ -82,17 +89,14 @@ public class ERD2Layout implements Layout {
 	/** An instance of the Gravisto-to-ERDTweeny conversion program. */
 	private GR2Tweeny gr2t;
 	
-	/** An instance of the logger */
-	/*final java.util.logging.Logger LOG; */
-	
 	/** This class name -- for use by logging invocation */
-	String name="ERD2Layout";
+	private String name = "ERD2Layout";
 
 	/** An instance of Gravisto's SugiyamaData */
 	private SugiyamaData sd;
 
 	/** An instance of the backend algorithm, sugiyama class */
-	Sugiyama sg;
+	private Sugiyama sg;
 
 	/** Control the transition speed for graph animation. 
 	 *   This variable is ignored in the ERDLayout process,
@@ -112,11 +116,8 @@ public class ERD2Layout implements Layout {
 	 * 
 	 */
 
-	public ERD2Layout(ERD2LayoutBuilder builder) {
+	public ERD2Layout(LayoutBuilder builder) {
 		this.builder = builder;
-		
-		/* == ENABLE LOGGING == */
-	/*	LOG = java.util.logging.Logger.getLogger(this.getClass().getName()); */
 	}
 
 	//	@Override
@@ -134,15 +135,12 @@ public class ERD2Layout implements Layout {
 	@SuppressWarnings("null")
 	public void goAlgo() {
 		Log.info("Entering ERD2Layout goAlgo");
+		
 		/*
-		 * Retrieve the graph from the Gephi infrastructure.
+		 * Note whether the graph was added or came from gephi workspace.
 		 */
-		Graph g = graphModel.getGraphVisible();
-
-		/*
-		 * Lock the graph so no other part of  Gephi can access it.
-		 */
-		g.readLock();
+	
+		getGraph();
 		
 		/*
 		 * Create an instance of the conversion program GE2Tweeny
@@ -162,7 +160,7 @@ public class ERD2Layout implements Layout {
 		 * Create the SugiyamaData object, and populate it with
 		 * the algorithms it will run on the subject graph.
 		 */
-		SugiyamaData sd = new SugiyamaData();
+		sd = new SugiyamaData();
 		buildAlgorithms();
 
 
@@ -200,7 +198,7 @@ public class ERD2Layout implements Layout {
 		 * graph from SugiyamaData, and the ERDTweeny class.
 		 * Perform the conversion.
 		 */
-		gr2t = new GR2Tweeny((FastGraph) sd.getGraph(), erdt);
+		gr2t = new GR2Tweeny(sd, erdt);
 		gr2t.convertToT();
 
 		/*
@@ -223,7 +221,7 @@ public class ERD2Layout implements Layout {
 
 		g.readUnlock();
 		
-		Log.info("Leaving ERD2Laout goAlgo");
+		Log.info("Leaving ERD2Layout goAlgo");
 
 	}
 
@@ -323,7 +321,9 @@ public class ERD2Layout implements Layout {
 		
 		sd.setLastSelectedAlgorithms(getAlgList());
 		
-		sd.setSelectedAlgorithms(getSugiyamaAlgorithms());
+		algorithms = getSugiyamaAlgorithms();
+		
+		sd.setSelectedAlgorithms(algorithms);
 		
 		sd.setAlgorithmMap(getAlgMap());
 		
@@ -350,21 +350,22 @@ public class ERD2Layout implements Layout {
 	
 	@SuppressWarnings("null")
 	public SugiyamaAlgorithm[] getSugiyamaAlgorithms() {
+		SugiyamaAlgorithm[] sa=new SugiyamaAlgorithm[4];
 		
+		sa[0] = new DFSDecycling();
+		sa[1] = new LongestPath();
+		sa[2] = new Median();
+		sa[3] = new SocialBrandesKoepf();
+		
+		return sa;
 
 		
-		algorithms[0] = new DFSDecycling();
-		algorithms[1] = new LongestPath();
-		algorithms[2] = new Median();
-		algorithms[3] = new SocialBrandesKoepf();
-
-		return  algorithms;
 	}
 	
 	@SuppressWarnings("null")
 	public HashMap<String, SugiyamaAlgorithm>  getAlgMap() {
 		
-		HashMap<String, SugiyamaAlgorithm> algMap=null;
+		HashMap<String, SugiyamaAlgorithm> algMap= new HashMap<String, SugiyamaAlgorithm>();
 		
 		algMap.put("DecyclingAlgorithm",algorithms[0]);
 		algMap.put("LevellingAlgorithm", algorithms[1]);
@@ -373,4 +374,31 @@ public class ERD2Layout implements Layout {
 		return algMap;
 	}
 	
+	/*
+	 * Methods below here are to aid in testing this code.
+	 */
+	
+	public void setGraph(Graph gIn) {
+		g = gIn;
+		graphAdded = true;
+	}
+	
+	private void getGraph() {
+		if (!(graphAdded)){
+			/*
+			 * Retrieve the graph from the Gephi infrastructure.
+			 */
+			g = graphModel.getGraphVisible();
+			/*
+			 * Lock the graph so no other part of  Gephi can access it.
+			 */
+			g.readLock();
+		}
+	}
+	
+	private void unlockGraph() {
+		if (!(graphAdded)){
+			g.readUnlock();
+		}
+	}
 }
